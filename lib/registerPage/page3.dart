@@ -181,7 +181,9 @@ import 'package:foodie_zone/HomePage/homePage.dart';
 import 'package:foodie_zone/services/AuthMethod.dart';
 
 class SignUp extends StatefulWidget {
-  static final String id = 'signup_screen';
+  const  SignUp({super.key});
+
+  // static final String id = 'signup_screen';
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -227,6 +229,7 @@ class _SignUpState extends State<SignUp> {
                       children: <Widget>[
                         
               Container(
+                height: 250,
                  width: MediaQuery.sizeOf(context).width,
                   child: Image(
                      image: AssetImage(
@@ -238,7 +241,8 @@ class _SignUpState extends State<SignUp> {
                   width: 350,
                           child: TextFormField(
                             decoration: InputDecoration(labelText: 'Name',
-                            border: OutlineInputBorder()),
+                            border: OutlineInputBorder()
+                            ),
                             validator: (input) => input!.trim().isEmpty
                                 ? 'Please enter a valid name'
                                 : null,
@@ -262,19 +266,19 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
 
-                        SizedBox(
-                             height: 80,
-                  width: 350,
-                          child: TextFormField(
-                            decoration: InputDecoration(labelText: 'bio',
-                                                        border: OutlineInputBorder()
-),
-                            validator: (input) => input!.trim().isEmpty
-                                ? 'Please enter a valid bio'
-                                : null,
-                            onSaved: (input) => _bio = input!,
-                          ),
-                        ),
+//                         SizedBox(
+//                              height: 80,
+//                   width: 350,
+//                           child: TextFormField(
+//                             decoration: InputDecoration(labelText: 'bio',
+//                                                         border: OutlineInputBorder()
+// ),
+//                             validator: (input) => input!.trim().isEmpty
+//                                 ? 'Please enter a valid bio'
+//                                 : null,
+//                             onSaved: (input) => _bio = input!,
+//                           ),
+//                         ),
                 //           SizedBox(
                 //   height: 18,
                 // ),

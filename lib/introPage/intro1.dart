@@ -66,7 +66,7 @@ class _IntroOneState extends State<IntroOne> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height,
-                width: 400,
+                width: MediaQuery.of(context).size.width,
                 child: const Image(
                   image: AssetImage("assets/856bca25c1c2cbaf608d598f844c1a05.jpg"),
                   fit: BoxFit.cover,
@@ -91,6 +91,7 @@ class _IntroOneState extends State<IntroOne> {
     );
   }
 }
+
 
 
 

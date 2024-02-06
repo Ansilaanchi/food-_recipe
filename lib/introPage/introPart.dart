@@ -38,6 +38,11 @@ class AnimatedBuilderExampleApp extends StatelessWidget {
 
     return showIntro;
   }
+
+  Future<void> markIntroAsSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('showIntro', false);
+  }
 }
 
 class AnimatedBuilderExampleScreen extends StatelessWidget {
@@ -52,7 +57,8 @@ class AnimatedBuilderExampleScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: IconButton(
-          onPressed: () {
+          onPressed: () async {
+            AnimatedBuilderExampleApp().markIntroAsSeen(); // Corrected line
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => LoginPage()),
             );
@@ -97,16 +103,6 @@ class AnimatedBuilderExampleScreen extends StatelessWidget {
   }
 }
 
-class IntroPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // Your introductory page UI implementation goes here
-      // ...
-    );
-  }
-}
-
 class AnimatedBuilderExample extends StatefulWidget {
   const AnimatedBuilderExample({Key? key}) : super(key: key);
 
@@ -134,16 +130,7 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample> with Ti
         width: 450.0,
         height: 450.0,
         color: Colors.transparent,
-        child: const Center(
-        //   child: Text(
-        //     // 'mOre eAsY & \n  BetteR finiShiNg',
-        //     style: TextStyle(
-        //       color: Colors.white,
-        //       fontSize: 35,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        ),
+        child: const Center(),
       ),
       builder: (BuildContext context, Widget? child) {
         return Transform.rotate(
@@ -154,9 +141,6 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample> with Ti
     );
   }
 }
-
-
-
 
 
 // import 'dart:math' as math;

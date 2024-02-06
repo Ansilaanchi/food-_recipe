@@ -8,32 +8,6 @@ class RecipeMethods {
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // Future<String> recipeUser({
-  //   required String? recipeName,
-  //   required List<String?> ingredients,
-  //   required String? instructions,
-  //   required String? image,
-
-  // }) async {
-
-  //       var recipe;
-  //       RecipeModel recipeModel = RecipeModel(
-  //         recipeName: recipeName??"", 
-  //         image: image??"",
-  //          ingredients: ingredients??"",
-  //         //  uid: DateTime.now().millisecondsSinceEpoch.toString(),
-  //           instructions: instructions??"",
-  //           );
-
-  //       await _firestore.collection('recipe').doc(recipe.recipe!.uid).set(
-  //             recipeModel.toJson(),
-  //           );
-  //   return "true";
-  //     }
-  
-  // }
-
-
 Future<String> recipeUser({
   required String? recipeName,
   required List<String?>? ingredients, // Change List<String?> to List<String?>?

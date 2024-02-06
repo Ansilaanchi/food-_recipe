@@ -17,14 +17,7 @@ class _RecipePageState extends State<RecipePage> {
   String title = "";
   String ingredients = "";
   String instructions = "";
-  // bool _isLoading = false;
-
-  // final TextEditingController recipeNameController = TextEditingController();
-  // final TextEditingController ingredientsController = TextEditingController();
-  // final TextEditingController instructionsController = TextEditingController();
-  // final TextEditingController titleController = TextEditingController();
-  //   final TextEditingController imageController = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

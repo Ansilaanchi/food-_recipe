@@ -2,7 +2,7 @@
 import 'package:foodie_zone/HomePage/homePage.dart';
 // import 'package:foodie_zone/navigatePages/favourite.dart';
 import 'package:foodie_zone/drawerPage/myProfile.dart';
-import 'package:foodie_zone/notes/notehome.dart';
+import 'package:foodie_zone/userPlatform/userScreen.dart';
 
 
 Widget Newbarr(BuildContext context) {
@@ -26,11 +26,24 @@ Widget Newbarr(BuildContext context) {
                 InkWell(
                   onTap: (){
                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()));                     
+                    
+                          MaterialPageRoute(builder: (context) => RecipeForm()));                     
                   },
                   child:Icon(Icons.post_add)
                    
                 ),
+                
+
+                //   InkWell(
+                //   onTap: (){
+                //      Navigator.push(context,
+                    
+                //           MaterialPageRoute(builder: (context) => RecipeList()));                     
+                //   },
+                //   child:Icon(Icons.save)
+                   
+                // ),
+ 
                 // GestureDetector(
                 //     onTap: () {
                 //       Navigator.push(context,
@@ -39,13 +52,15 @@ Widget Newbarr(BuildContext context) {
                 //     child: Icon(
                 //       Icons.favorite,color: Colors.red,
                 //     )),
+
                GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MyProfile()));
                 },
-                 child:CircleAvatar(
+                 child:
+                 CircleAvatar(
                     radius: 15,
-                    backgroundImage: AssetImage("assets/islamic-pics-for-dp-girl-islamic-dp-images-girl.jpg"),
+                    backgroundImage: AssetImage("assets/download (2).png"),
                   )
                   // Icon(Icons.person)
                )

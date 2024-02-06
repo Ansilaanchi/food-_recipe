@@ -215,27 +215,30 @@ class _BreakfastState extends State<Breakfast> {
                 itemBuilder: (context, index) {
                   RecipeModel model = RecipeModel.getModelFromJson(
                       json: snapshot.data!.docs[index].data());
-                  return ListTile(
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ListTile(
+                      
+                      leading:CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                  model.image
+                                    ),
+                              ), 
                     
-                    leading:CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(
-              model.image
-                ),
-          ), 
-                  
-                    title: Text(model.recipeName),
-                  
-                    // subtitle: Text(model.instructions[index]),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FirebaseDataScreen(model.id)
-                                
-                            
-                              ));
-                    },
+                      title: Text(model.recipeName),
+                    
+                      // subtitle: Text(model.instructions[index]),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FirebaseDataScreen(model.id)
+                                  
+                              
+                                ));
+                      },
+                    ),
                   );
                 }),
           );

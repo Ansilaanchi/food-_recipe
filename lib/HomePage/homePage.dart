@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foodie_zone/HomePage/carousel_slide.dart';
 import 'package:foodie_zone/HomePage/cooking.dart';
-import 'package:foodie_zone/HomePage/searchKey.dart';
+// import 'package:foodie_zone/HomePage/searchKey.dart';
 import 'package:foodie_zone/HomePage/stack.dart';
 import 'package:foodie_zone/HomePage/topRowSlide.dart';
 import 'package:foodie_zone/HomePage/trending.dart';
@@ -11,6 +11,7 @@ import 'package:foodie_zone/drawerPage/drawerPage.dart';
 import 'package:foodie_zone/navigatePages/navigate.dart';
 // import 'package:foodie_zone/otherPage/items.dart';
 import 'package:foodie_zone/services/model/favoriteModel.dart';
+import 'package:foodie_zone/userPlatform/recipeList.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -89,7 +90,7 @@ Future<bool> isLoggedIn() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer:DrawerPage(context),
+      drawer:DrawerPage(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -125,10 +126,10 @@ Future<bool> isLoggedIn() async {
               ),
             ),
 
-            const SizedBox(
-              height: 20,
-            ),
-            SerachKey(),
+            // const SizedBox(
+              // height: 20,
+            // ),
+            // SerachKey(),
            
             const SizedBox(
               height: 25,
@@ -155,8 +156,12 @@ Future<bool> isLoggedIn() async {
             ),
 
             Trending(context),
-           
             carousel_slider(context),
+
+
+//  SizedBox(height: 40),
+//           _buildViewRecipesButton(context),
+
           ],
         ),
       ),
@@ -290,6 +295,34 @@ Future<bool> isLoggedIn() async {
       ),
     );
   }
+}
+
+Widget _buildViewRecipesButton(BuildContext context) {
+  return Center(
+    child: Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        color: Color.fromARGB(255, 211, 213, 214),
+      ),
+      height: 80,
+      width: double.infinity,
+      child: InkWell(
+        onTap: () {
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RecipeList()),
+          );
+        },
+        child: Center(
+          child: Text(
+            'View Recipes',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 

@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:foodie_zone/drawerPage/notification.dart';
 import 'package:foodie_zone/drawerPage/profileImage.dart';
 import 'package:foodie_zone/drawerPage/textBox.dart';
+// import 'package:foodie_zone/services/model/profileData.dart';
 import 'package:image_picker/image_picker.dart';
 
 class MyProfile extends StatefulWidget {
@@ -15,6 +18,9 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _bioController = TextEditingController();
+
   Uint8List? _image;
   File? imageFile;
   File? selectedImage;
@@ -22,9 +28,12 @@ class _MyProfileState extends State<MyProfile> {
 
   bool isObscurePassword = true;
 
-  Future<void> editField(String field) async {}
+  Future<void> editField(String field) async {
+  }
   @override
   Widget build(BuildContext context) {
+    String? uid = FirebaseAuth.instance.currentUser?.uid;
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,61 +41,33 @@ class _MyProfileState extends State<MyProfile> {
       ),
       
       body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
-          // Stack(
-          //   children: [
-          //     _image != null
-          //         ? Center(
-          //             child: CircleAvatar(
-          //               radius: 100,
-          //               backgroundImage: MemoryImage(_image!),
-          //             ),
-          //           )
-          //         : Center(
-          //             child: CircleAvatar(
-          //               radius: 100,
-          //               backgroundImage: AssetImage(
-          //                   "assets/islamic-pics-for-dp-girl-islamic-dp-images-girl.jpg"),
-          //             ),
-          //           ),
-          //     Positioned(
-          //         right: 90,
-          //         bottom: 4,
-          //         child: IconButton(
-          //             onPressed: () {
-          //               showImagePickerOption(context);
-          //             },
-          //             icon: Icon(Icons.add_a_photo, size: 30,)))
-          //   ],
-          // ),
 
 
-ProfileImage( 
-  
-),
+        ProfileImage(),
 
           SizedBox(
-            height: 100,
+            height: 10,
           ),
 
-// uensame
-  TextBox(
-  text: 'ur name',
+TextBox(
+  text: _nameController.text,
   sectionName: 'name',
   onPressed: () {
-    showSettingsBottomSheet(context, 'users', 'name', 'ur name');
+    _showSettingsBottomSheet(context, 'name', _nameController.text);
   },
 ),
-
-//bio
-
 TextBox(
-  text: 'Some bio',
+  text: _bioController.text,
   sectionName: 'bio',
   onPressed: () {
-    oneshowSettingsBottomSheet(context, 'users', 'bio', 'Some bio');
+    _showSettingsBottomSheet(context, 'bio', _bioController.text);
   },
 ),
+
+
+
         ]
         ),
         
@@ -214,6 +195,7 @@ TextBox(
 }
 
 class _showSettingsBottomSheet {
+  _showSettingsBottomSheet(BuildContext context, String text, String );
 }
 
 Container ThinDivider() {
@@ -222,127 +204,3 @@ Container ThinDivider() {
     color: Colors.grey[200],
   );
 }
-
-//   const Center(
-//     child: Text(
-//       "Aysha Qasim",
-//       style: TextStyle(
-//         fontSize: 25,
-//         fontWeight: FontWeight.bold,
-//       ),
-//     ),
-//   ),
-//   const Center(
-//       child: Text(
-//     "Its mY paSsiOn..!",
-//     style: TextStyle(
-//       fontSize: 18,
-//     ),
-//   )),
-//   const SizedBox(
-//     height: 20,
-//   ),
-// ThinDivider(),
-//   const SizedBox(
-//     height: 20,
-//   ),
-// const Row(
-//   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//   children: [
-//     Column(
-//       children: [
-//         Text(
-//           "264",
-//           style: TextStyle(
-//             fontSize: 20,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//         Text(
-//           "Photos",
-//           style: TextStyle(
-//             color: Colors.grey,
-//           ),
-//         ),
-//       ],
-//     ),
-//     Column(
-//       children: [
-//         Text(
-//           "45k",
-//           style: TextStyle(
-//             fontSize: 20,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//         Text(
-//           "Followers",
-//           style: TextStyle(
-//             color: Colors.grey,
-//           ),
-//         ),
-//       ],
-//     ),
-//     Column(
-//       children: [
-//         Text(
-//           "213",
-//           style: TextStyle(
-//             fontSize: 20,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//         Text(
-//           "Following",
-//           style: TextStyle(
-//             color: Colors.grey,
-//           ),
-//         ),
-//       ],
-//     ),
-
-//   ],
-// ),
-//  ThinDivider(),
-
-//  Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: Container(
-//                 width: 300,
-//                 child: GridView.builder(
-//                     physics: ScrollPhysics(),
-//                     shrinkWrap: true,
-//                     itemCount: img.length,
-//                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//                         crossAxisSpacing: 5,
-//                         mainAxisSpacing: 5,
-//                         crossAxisCount: 3),
-//                     itemBuilder: (context, index) {
-//                       return Container(
-//                           width: 100,
-//                           height: 100,
-//                           child: Image.file(
-//                             img[index],
-//                             fit: BoxFit.cover,
-//                           ));
-//                     })),
-//           ),
-//           Row(
-//             children: [
-//               if (imageFile != null)
-//                 Container(
-//                   width: 150,
-//                   height: 150,
-//                   decoration: BoxDecoration(
-//                       image: DecorationImage(
-//                           image: FileImage(imageFile!), fit: BoxFit.cover)),
-//                 )
-//               else
-//                 Container(
-//                   width: 150,
-//                   height: 150,
-//                   decoration:
-//                       BoxDecoration(color: Color.fromARGB(255, 255, 254, 249)),
-//                 ),
-//             ],
-//           ),
